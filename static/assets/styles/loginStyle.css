@@ -1,0 +1,72 @@
+body {
+    background-image: url("../images/shop2.jpeg");
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 90vh;
+}
+
+.card {
+    background-color: rgba(15, 14, 14, 0.88);
+    border-radius: 15px;
+    box-shadow: 0 0 5px 10px rgba(15, 14, 14, 0.88);
+}
+
+
+
+/** input login style*/
+.divInput {
+    padding-bottom: 2px;
+    background: rgba(11, 12, 53, 1);
+    border-radius: 0px 0px 8px 8px;
+}
+
+.inputLogin {
+    font-size: 14px;
+    font-weight: bold;
+    background: #9E9E9E;
+    border: none;
+    color: #0B0C35 !important;
+    border-bottom: 2px solid rgba(11, 12, 53, 0.62);
+    border-radius: 0px 0px 8px 8px;
+    outline: none;
+}
+
+.inputLogin:focus {
+    background: #9E9E9E;
+    border-bottom: 2px solid rgba(11, 12, 53, 0.62);
+}
+
+.input-group-text {
+    border: none;
+    border-bottom: 2px solid rgba(11, 12, 53, 0.62);
+    border-radius: 0px 0px 8px 8px;
+    background-color: #9E9E9E !important;
+}
+
+/**end input login style*/
+
+.btnSubmit {
+    background: #FA866C;
+}
+
+.btnSubmit:focus {
+    background: #432a24;
+}
+
+.suggestionText {
+    line-height: 1px;
+    font-size: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: #FA866C;
+    font-weight: bold;
+    font-size: 13px;
+}
+
+a:hover {
+    text-decoration: underline;
+    color: #FA866C;
+}

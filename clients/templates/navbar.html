@@ -1,0 +1,14 @@
+<nav class="navbar navbar-light bg-light justify-content-between bg-white px-5 ">
+    <a class="navbar-brand ml-5 titleNavBar">BonJour M 
+        {{ user.username }}
+        ,</a>
+    <div class="mr-5">
+
+        <a class="navbar-brand {{home}}" href="/">Home </a>
+        <a class="navbar-brand {{pageClient}}" href="/clients/">Gestion Client</a>
+        <a class="navbar-brand {{pageProduct}}" href="/product/">Gestion Produit</a>
+        <a class="navbar-brand {{pageCredit}}" href="/credits/">Gestion Credit</a>
+        <a class="navbar-brand " href="/admin">Gestion Admin</a>
+        <a class="navbar-brand " href="/accounts/logout">Logout</a>
+    </div>
+</nav>

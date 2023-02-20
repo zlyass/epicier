@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+{% block title %}Gestion Credit{% endblock %}
+{% block content %}
+
+<div class="mx-auto w-50 p-5 bg-white card mt-5">
+    <h1 class="mx-auto headTitle mb-5">Gerer Vos Credits</h1>
+
+    <!-- start search -->
+    <form action="">
+        <div class="row">
+            <div class="col-8"></div>
+            <div class="col-4 input-group  ">
+                <div class="input-group mb-3 divInput">
+                    <select onchange="location = this.value;"
+                        class="form-select  h-auto  form-control pl-4 shadow-none outline-none inputLogin"
+                        aria-label=".form-select-lg example">
+                        {% if sClient  is null  %}
+                        {% else %}
+                        <option value="/credits/client/{{sClient.id}}">{{sClient.name}}</option>
+                        {% endif %}
+                        <option value="/credits/show">Choisir Client</option>
+                        {% for client in clients %}
+                            {% if sClient.id == client.id %}
+                            {% else %}
+                                <option value="/credits/client/{{client.id}}">{{client.name}}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <!-- end Client select -->
+            </div>
+        </div>
+
+    </form>
+    <!-- end search -->
+
+
+    <!-- start table -->
+    <table class="table table-borderless">
+        <thead>
+            <tr>
+                <th scope="col">Client</th>
+                <th scope="col">Product</th>
+                <th scope="col">Price</th>
+                <th scope="col">Quantite</th>
+                <th scope="col">Total</th>
+                <th scope="col">Etat</th>
+                <th scope="col ">
+                    <div class="row">
+                        <div class="col-9"></div>
+                        <div class="col-2"><svg width="30" height="25" viewBox="0 0 30 25" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M15 15.625C15.9946 15.625 16.9484 15.2958 17.6517 14.7097C18.3549 14.1237 18.75 13.3288 18.75 12.5C18.75 11.6712 18.3549 10.8763 17.6517 10.2903C16.9484 9.70424 15.9946 9.375 15 9.375C14.0054 9.375 13.0516 9.70424 12.3483 10.2903C11.6451 10.8763 11.25 11.6712 11.25 12.5C11.25 13.3288 11.6451 14.1237 12.3483 14.7097C13.0516 15.2958 14.0054 15.625 15 15.625Z"
+                                    stroke="#686882" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                                <path
+                                    d="M2.5 13.4166V11.5832C2.5 10.4999 3.5625 9.60408 4.875 9.60408C7.1375 9.60408 8.0625 8.27075 6.925 6.63533C6.275 5.69783 6.6625 4.47908 7.8 3.93741L9.9625 2.90616C10.95 2.41658 12.225 2.70825 12.8125 3.53116L12.95 3.72908C14.075 5.3645 15.925 5.3645 17.0625 3.72908L17.2 3.53116C17.7875 2.70825 19.0625 2.41658 20.05 2.90616L22.2125 3.93741C23.35 4.47908 23.7375 5.69783 23.0875 6.63533C21.95 8.27075 22.875 9.60408 25.1375 9.60408C26.4375 9.60408 27.5125 10.4895 27.5125 11.5832V13.4166C27.5125 14.4999 26.45 15.3957 25.1375 15.3957C22.875 15.3957 21.95 16.7291 23.0875 18.3645C23.7375 19.3124 23.35 20.5207 22.2125 21.0624L20.05 22.0937C19.0625 22.5832 17.7875 22.2916 17.2 21.4687L17.0625 21.2707C15.9375 19.6353 14.0875 19.6353 12.95 21.2707L12.8125 21.4687C12.225 22.2916 10.95 22.5832 9.9625 22.0937L7.8 21.0624C7.25512 20.801 6.85698 20.3701 6.69293 19.8643C6.52889 19.3585 6.61235 18.8191 6.925 18.3645C8.0625 16.7291 7.1375 15.3957 4.875 15.3957C3.5625 15.3957 2.5 14.4999 2.5 13.4166Z"
+                                    stroke="#686882" stroke-width="3" stroke-miterlimit="10" stroke-linecap="round"
+                                    stroke-linejoin="round" />
+                            </svg></div>
+                    </div>
+
+                </th>
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            {% for credit in credits %}
+            <tr>
+                <td>{{ credit.client.name }}</td>
+                <td>{{ credit.product.name }}</td>
+                <td>{{ credit.price }}</td>
+                <td>{{ credit.quantite }}</td>
+                <td>{{ credit.total }}</td>
+                <td>
+
+                    {% if credit.etat %}
+                    paye
+                    {% else %}
+                    Non paye
+                    {% endif %}
+                </td>
+                <td>
+
+                    <div class="row">
+
+                        {% if not credit.etat %}
+                        <div class="col-6">
+
+                            <!-- start editer -->
+                            <a href="/credits/edit/{{ credit.id }}">
+                                <button class="w-100 btn btnSubmit text-white   outline-none shadow-none " type="submit"
+                                    style="font-size: 10px;">EDITER</button>
+                            </a>
+                            <!-- end editer -->
+
+                        </div>
+                        {% endif %}
+                        {% if not credit.etat %}
+                        <div class="col-6">
+                            <a href="/credits/paye/{{ credit.id }}">
+                                <button class="w-100 btn btn-success text-white   outline-none shadow-none "
+                                    type="submit" style="font-size: 10px;">Paye</button>
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="col-6">
+
+                            <a href="/credits/delete/{{ credit.id }}">
+                                <svg style="cursor: pointer;" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <path
+                                        d="M21 5.98C17.67 5.65 14.32 5.48 10.98 5.48C9 5.48 7.02 5.58 5.04 5.78L3 5.98M8.5 4.97L8.72 3.66C8.88 2.71 9 2 10.69 2H13.31C15 2 15.13 2.75 15.28 3.67L15.5 4.97M18.85 9.14L18.2 19.21C18.09 20.78 18 22 15.21 22H8.79C6 22 5.91 20.78 5.8 19.21L5.15 9.14M10.33 16.5H13.66M9.5 12.5H14.5"
+                                        stroke="#686882" stroke-width="3" stroke-linecap="round"
+                                        stroke-linejoin="round" />
+                                </svg>
+                            </a>
+
+                        </div>
+                        {% endif %}
+
+
+                    </div>
+                </td>
+
+
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+    <!-- end table -->
+
+
+    <!-- start text suggestion -->
+    <div class="suggestionText text-center font-weight-light my-5">
+        <p>Vous pouvez Ajoutez des nouveaux Produits par cet <a href="/credits/"> Interface</a>
+        </p>
+    </div>
+    <!-- end text suggestion -->
+</div>
+
+{% endblock %}

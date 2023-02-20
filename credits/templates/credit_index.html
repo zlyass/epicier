@@ -1,0 +1,82 @@
+
+{% extends "base.html" %}
+{% block title %}Gestion Credit{% endblock %}
+{% block content %}
+<div class="mx-auto w-50 p-5 bg-white card mt-5">
+  <h1 class="mx-auto headTitle mb-5">Ajouter un nouveau Credit</h1>
+  <form action="/credits/" method="post">
+    {% csrf_token %}
+    <div class="row no-gutters ">
+      <div class="col-4 ml-4 mr-1">
+        <!-- start Client select -->
+        <div class="input-group mb-3 divInput">
+          <select name="client" class="form-select  h-auto  form-control pl-4 shadow-none outline-none inputLogin"
+            aria-label=".form-select-lg example">
+            <option>Choisir Client</option>
+            {% for client in clients %}  
+            <option value="{{client.id}}">{{client.name}}</option>
+            {% endfor %} 
+          </select>
+        </div>
+        <!-- end Client select -->
+      </div>
+      <div class="col-4   ">
+        <!-- start Produit select -->
+        <div class="input-group mb-3 divInput">
+          <select name="product" class="form-select  h-auto  form-control pl-4 shadow-none outline-none inputLogin"
+            aria-label=".form-select-lg example">
+            <option>Choisir Produit</option>
+            {% for product in products %}
+            <option value="{{product.id}}">{{product.name}}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <!-- end Produit select -->
+      </div>
+      <div class="col-2  ml-2">
+        <div class="row no-gutters">
+          <div class="col-4 mt-2"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.25513 14.308L13.5728 1.54818M14.1691 13.4762L1.65882 2.37997" stroke="#F63B12"
+                stroke-opacity="0.62" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="col-8">
+            <!-- start qte produit input -->
+            <div class="input-group mb-3 divInput">
+              <input type="text" name="quantite" class="form-control h-auto  pl-4 shadow-none outline-none inputLogin" placeholder="Qte"
+                aria-label="Qte Produit" aria-describedby="basic-addon1">
+            </div>
+            <!-- end qte Produit input -->
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <!-- start btn add -->
+        <input class="w-100 btn btnSubmit text-white font-weight-bold outline-none shadow-none my-2" type="submit"
+          value="AJOUTER">
+        <!-- end btn add -->
+      </div>
+      <div class="col-3"></div>
+    </div>
+
+
+  </form>
+
+
+  <!-- start text suggestion -->
+  <div class="suggestionText text-center font-weight-light my-5">
+    <p>VVous pouvez Consultez et Modifiez les informations de vos Credits par cet <a href="/credits/show">
+        Interface</a>
+    </p>
+  </div>
+  <!-- end text suggestion -->
+</div>
+{% endblock %}

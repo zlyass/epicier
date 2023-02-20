@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% block title %}Gestion Client{% endblock %}
+{% block content %}
+<div class="mx-auto w-50 p-5 bg-white card mt-5">
+  <h1 class="mx-auto headTitle mb-5">Update Client</h1>
+  <form action="/clients/update/{{client.id}}" method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-4 ">
+        <!-- start nom input -->
+        <div class="input-group mb-3 divInput">
+          <input type="text" name="name" value="{{client.name}}" class="form-control h-auto  pl-4 shadow-none outline-none inputLogin"
+            placeholder="Nom" aria-label="Nom" aria-describedby="basic-addon1">
+        </div>
+        <!-- end nom input -->
+      </div>
+      <div class="col-4 ">
+        <!-- start addresse input -->
+        <div class="input-group mb-3 divInput">
+          <input type="text" value="{{client.addresse}}" name="addresse" class="form-control h-auto  pl-4 shadow-none outline-none inputLogin"
+            placeholder="Addresse" aria-label="Prenom" aria-describedby="basic-addon1">
+        </div>
+        <!-- end addresse input -->
+      </div>
+      <div class="col-2"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-4">
+        <!-- start CIN input -->
+        <div class="input-group mb-3 divInput">
+          <input type="text" name="cin" class="form-control h-auto  pl-4 shadow-none outline-none inputLogin"
+            placeholder="CIN" aria-label="CIN" aria-describedby="basic-addon1">
+        </div>
+        <!-- end CIN input -->
+      </div>
+      <div class="col-4">
+        <!-- start telephone input -->
+        <div class="input-group mb-3 divInput">
+          <input type="text" value="{{client.phoneNumber}}" name="phoneNumber" class="form-control h-auto  pl-4 shadow-none outline-none inputLogin"
+            placeholder="Telephone" aria-label="Telephone" aria-describedby="basic-addon1">
+        </div>
+        <!-- end telephone input -->
+      </div>
+      <div class="col-2"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-4"></div>
+
+      <div class="col-4">
+        <!-- start btn add -->
+        <input class="w-100 btn btnSubmit text-white font-weight-bold outline-none shadow-none " type="submit"
+          value="UPDATE">
+        <!-- end btn add -->
+      </div>
+      <div class="col-2"></div>
+    </div>
+  </form>
+</div>
+
+
+
+{% endblock %}

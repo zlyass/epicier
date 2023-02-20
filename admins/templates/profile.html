@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% block title %}Gestion Client{% endblock %}
+{% block content %}
+<div class="mx-auto w-50 mt-4 col p-5 ">
+    <dic class=" row ">
+        <div class="col-5 card bg-white p-5 mx-2 text-center">
+            <h1 class="statistiques-title">{{nbrClient}}</h1>
+            <h1 class="statistiques-subTitle">CLIENTS</h1>
+        </div>
+        <div class="col-6  card bg-white p-5 mx-2 ">
+            <h1 class="statistiques-subTitle">Total Credits Actuels</h1>
+            <h1 class="statistiques-title">{{totalCredits}}<span class="statistiques-subTitle">Dh</span></h1>
+        </div>
+    </dic>
+    <dic class=" row mt-4">
+        <div class="col-6 card bg-white p-5 mx-2 text-center">
+            <h1 class="statistiques-subTitle"><span class="statistiques-title">{{nbrClientSansCredit}} </span> Sans Credits</h1>
+            <h1 class="statistiques-subTitle"><span class="statistiques-title">{{nbrClientAvecCredit}} </span>Avec Credits</h1>
+
+        </div>
+        <div class="col-5  card bg-white p-5 mx-2 text-center">
+
+            <div class="">
+                <h1 class="statistiques-subTitle">Taux Credits Payés <br><span class="statistiques-title">{{tauxCreditsPaye}}% </span> </h1>
+                <h1 class="statistiques-subTitle">Credit Non Payés <br><span class="statistiques-title">{{creditNonPaye}}DH</span></h1>
+    
+            </div>
+        </div>
+    </dic>
+</div>
+{% endblock %}

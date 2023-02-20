@@ -1,0 +1,149 @@
+
+{% extends "base.html" %}
+{% block title %}Gestion Credit{% endblock %}
+{% block content %}
+<div class="mx-auto w-50 p-5 bg-white card mt-5">
+  <h1 class="mx-auto headTitle mb-5">Update Credit</h1>
+  <form action="/credits/update/{{credit.id}}" method="post">
+    {% csrf_token %}
+    <div class="row no-gutters ">
+      <div class="col-4 ml-4 mr-1">
+        <!-- start Client select -->
+        <div class="input-group mb-3 divInput">
+          <select name="client" class="form-select  h-auto  form-control pl-4 shadow-none outline-none inputLogin"
+            aria-label=".form-select-lg example">
+            <option value="{{credit.client.id}}">{{credit.client.name}}</option>
+            {% for client in clients %}
+              {% if credit.client.id != client.id %}
+                <option value="{{client.id}}">{{client.name}}</option>
+              {% endif %}
+            
+            {% endfor %}
+          </select>
+        </div>
+        <!-- end Client select -->
+      </div>
+      <div class="col-4   ">
+        <!-- start Produit select -->
+        <div class="input-group mb-3 divInput">
+          <select name="product" class="form-select  h-auto  form-control pl-4 shadow-none outline-none inputLogin"
+            aria-label=".form-select-lg example">
+            <option value="{{credit.product.id}}">{{credit.product.name}}</option>
+            {% for product in products %}
+              {% if credit.product.id != product.id %}
+                <option value="{{product.id}}">{{product.name}}</option>
+              {% endif %}
+            {% endfor %}
+          </select>
+        </div>
+        <!-- end Produit select -->
+      </div>
+      <div class="col-2  ml-2">
+        <div class="row no-gutters">
+          <div class="col-4 mt-2"><svg width="16" height="16" viewBox="0 0 16 16" fill="none"
+              xmlns="http://www.w3.org/2000/svg">
+              <path d="M2.25513 14.308L13.5728 1.54818M14.1691 13.4762L1.65882 2.37997" stroke="#F63B12"
+                stroke-opacity="0.62" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+          </div>
+          <div class="col-8">
+            <!-- start qte produit input -->
+            <div class="input-group mb-3 divInput">
+              <input type="text" value="{{credit.quantite}}" name="quantite" class="form-control h-auto  pl-4 shadow-none outline-none inputLogin" placeholder="Qte"
+                aria-label="Qte Produit" aria-describedby="basic-addon1">
+            </div>
+            <!-- end qte Produit input -->
+          </div>
+        </div>
+
+
+
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="col-3"></div>
+      <div class="col-6">
+        <!-- start btn add -->
+        <input class="w-100 btn btnSubmit text-white font-weight-bold outline-none shadow-none my-2" type="submit"
+          value="AJOUTER">
+        <!-- end btn add -->
+      </div>
+      <div class="col-3"></div>
+    </div>
+
+
+  </form>
+
+
+  <!-- start text suggestion -->
+  <div class="suggestionText text-center font-weight-light my-5">
+    <p>VVous pouvez Consultez et Modifiez les informations de vos Credits par cet <a href="/credits/show">
+        Interface</a>
+    </p>
+  </div>
+  <!-- end text suggestion -->
+</div>
+{% endblock %}
+
+
+
+ <!-- <form method="POST" class="post-form" action="/credits/update/{{credit.id}}">
+    {% csrf_token %}
+    <div class="container">
+      <br>
+      <div class="form-group row">
+        <label class="col-sm-1 col-form-label"></label>
+        <div class="col-sm-4">
+          <h3>Update Details</h3>
+        </div>
+      </div>
+      <div class="form-group row" style="display:none;">
+        <div class="col-sm-4">
+          <input type="text" name="id" id="id" required maxlength="20" value="{{ credit.id }}" />
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Client:</label>
+        <div class="col-sm-4">
+          <select name="client" value="{{credit.client.id}}" id="">
+            <option value="{{credit.client.id}}">{{credit.client.name}}</option>
+            {% for client in clients %}
+              {% if credit.client.id != client.id %}
+                <option value="{{client.id}}">{{client.name}}</option>
+              {% endif %}
+            
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Product:</label>
+        <div class="col-sm-4">
+          <select name="product"  id="">
+            <option value="{{credit.product.id}}">{{credit.product.name}}</option>
+            {% for product in products %}
+              {% if credit.product.id != product.id %}
+                <option value="{{product.id}}">{{product.name}}</option>
+              {% endif %}
+            
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+      <div class="form-group row">
+        <label class="col-sm-2 col-form-label">Quantite:</label>
+        <div class="col-sm-4">
+          <input type="text" name="quantite" id="quantite" required maxlength="15" value="{{ credit.quantite }}" />
+        </div>
+      </div>
+
+      <div class="form-group row">
+        <label class="col-sm-1 col-form-label"></label>
+        <div class="col-sm-4">
+          <button type="submit" class="btn btn-success">Update</button>
+        </div>
+      </div>
+    </div>
+  </form> -->

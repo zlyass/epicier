@@ -1,0 +1,89 @@
+
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static '/assets/styles/indexStyle.css' %}" />
+    <title>Login Page</title>
+</head>
+
+<body>
+    <div class="card w-50 p-5 mx-auto my-5 mt-4 ">
+        <!-- start user avatar -->
+        <svg class="mx-auto mb-4" width="85" height="85" viewBox="0 0 100 100" fill="none"
+            xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_1_85)">
+                <rect width="100" height="100" rx="50" fill="white" />
+                <rect x="30" y="16" width="40" height="40" rx="20" fill="#5A5A74" />
+                <rect x="-25" y="67" width="150" height="150" rx="75" fill="#5A5A74" />
+            </g>
+            <defs>
+                <clipPath id="clip0_1_85">
+                    <rect width="100" height="100" rx="50" fill="white" />
+                </clipPath>
+            </defs>
+        </svg>
+        <form action="/accounts/login/" method="post" class="w-50 mx-auto">
+            {% csrf_token %}
+            <!-- end user avatar -->
+
+            <!-- start username input -->
+            <div class="input-group mb-3 divInput">
+                <div class="input-group-prepend">
+                    <span class="input-group-text " id="basic-addon1">
+                        <svg width="22" height="20" viewBox="0 0 32 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M27.4533 27.5C27.4533 22.6625 22.32 18.75 16 18.75C9.68 18.75 4.54666 22.6625 4.54666 27.5M16 15C17.7681 15 19.4638 14.3415 20.714 13.1694C21.9643 11.9973 22.6667 10.4076 22.6667 8.75C22.6667 7.0924 21.9643 5.50269 20.714 4.33058C19.4638 3.15848 17.7681 2.5 16 2.5C14.2319 2.5 12.5362 3.15848 11.2859 4.33058C10.0357 5.50269 9.33333 7.0924 9.33333 8.75C9.33333 10.4076 10.0357 11.9973 11.2859 13.1694C12.5362 14.3415 14.2319 15 16 15Z"
+                                stroke="#0B0C35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </span>
+                </div>
+                <input type="text" name="username" class="form-control h-auto  pl-0 shadow-none outline-none inputLogin"
+                    placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
+            </div>
+            <!-- end username input -->
+
+            <!-- start password input -->
+            <div class="input-group mb-3 divInput">
+                <div class="input-group-prepend">
+                    <span class="input-group-text " id="basic-addon1">
+                        <svg width="22" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M11.02 19.5H7.5C6.88 19.5 6.33 19.48 5.84 19.41C3.21 19.12 2.5 17.88 2.5 14.5V9.5C2.5 6.12 3.21 4.88 5.84 4.59C6.33 4.52 6.88 4.5 7.5 4.5H10.96M15.02 4.5H16.5C17.12 4.5 17.67 4.52 18.16 4.59C20.79 4.88 21.5 6.12 21.5 9.5V14.5C21.5 17.88 20.79 19.12 18.16 19.41C17.67 19.48 17.12 19.5 16.5 19.5H15.02M15 2V22"
+                                stroke="#0B0C35" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                            <path d="M11.095 12H11.103M7.09399 12H7.10399" stroke="#0B0C35" stroke-opacity="0.62"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+
+                    </span>
+                </div>
+                <input type="password" name="password" class="form-control h-auto  pl-0 shadow-none outline-none inputLogin"
+                    placeholder="Password" aria-label="Password" aria-describedby="basic-addon1">
+            </div>
+            <!-- end password input -->
+            {% if form.non_field_errors %}
+            <ul class='form-errors'>
+                {% for error in form.non_field_errors %}
+                <li class="list-unstyled h6 text-warning">{{ error }}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            <!-- start btn se connecter -->
+            <input class="w-100 btn btnSubmit text-white font-weight-bold outline-none shadow-none my-2" type="submit"
+                value="Se Connecter">
+            <!-- end btn se connecter -->
+        </form>
+
+
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% block title %}Gestion Produit{% endblock %}
+{% block content %}
+<div class="mx-auto w-50 p-5 bg-white card mt-5">
+  <h1 class="mx-auto headTitle mb-5">Ajouter un nouveau Produit</h1>
+  <form action="/product/" method="post">
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-4 ">
+        <!-- start Nom Produit input -->
+        <div class="input-group mb-3 divInput">
+          <input type="text" name="name" class="form-control h-auto  pl-4 shadow-none outline-none inputLogin"
+            placeholder="Nom Produit" aria-label="Nom Produit" aria-describedby="basic-addon1">
+        </div>
+        <!-- end Nom Produit input -->
+      </div>
+      <div class="col-4">
+        <!-- start Description input -->
+        <div class="input-group mb-3 divInput">
+          <input type="text" name="description" class="form-control h-auto  pl-4 shadow-none outline-none inputLogin"
+            placeholder="Description" aria-label="Description" aria-describedby="basic-addon1">
+        </div>
+        <!-- end Description input -->
+      </div>
+
+      <div class="col-2"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-4">
+        <!-- start Prix vente input -->
+        <div class="input-group mb-3 divInput">
+          <input type="text" name="price" class="form-control h-auto  pl-4 shadow-none outline-none inputLogin"
+            placeholder="Prix d'achat" aria-label="Prix vente" aria-describedby="basic-addon1">
+        </div>
+        <!-- end Prix vente input -->
+      </div>
+      <div class="col-4">
+        <!-- start Prix vente input -->
+        <div class="input-group mb-3 divInput">
+          <input type="text" name="selling_price" class="form-control h-auto  pl-4 shadow-none outline-none inputLogin"
+            placeholder="Prix vente" aria-label="Prix vente" aria-describedby="basic-addon1">
+        </div>
+        <!-- end Prix vente input -->
+      </div>
+      <div class="col-2"></div>
+    </div>
+
+    <div class="row">
+      <div class="col-2"></div>
+      <div class="col-8">
+        <!-- start btn add -->
+        <input class="w-100 btn btnSubmit text-white font-weight-bold outline-none shadow-none my-2" type="submit"
+          value="AJOUTER">
+        <!-- end btn add -->
+      </div>
+      <div class="col-2"></div>
+    </div>
+  </form>
+
+  <!-- start text suggestion -->
+  <div class="suggestionText text-center font-weight-light my-5">
+    <p>Vous pouvez Consultez et Modifiez les informations de vos Produits par cet <a href="show">
+        Interface</a>
+    </p>
+  </div>
+  <!-- end text suggestion -->
+</div>
+{% endblock %}
